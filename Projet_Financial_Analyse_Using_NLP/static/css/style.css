@@ -1,0 +1,614 @@
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --accent-color: #f39c12;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #e9ecef;
+    --bg-accent: #ffffff;
+    --border-color: #dee2e6;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --positive-color: #27ae60;
+    --negative-color: #e74c3c;
+    --neutral-color: #f39c12;
+    --transition-speed: 0.3s;
+}
+
+.dark-mode {
+    --primary-color: #2980b9;
+    --secondary-color: #3498db;
+    --accent-color: #f39c12;
+    --text-primary: #f8f9fa;
+    --text-secondary: #e9ecef;
+    --bg-primary: #2c3e50;
+    --bg-secondary: #34495e;
+    --bg-accent: #1a2533;
+    --border-color: #4a5568;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --positive-color: #25a65a;
+    --negative-color: #e05544;
+    --neutral-color: #e6b412;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: var(--bg-accent);
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    outline: none;
+    display: flex;
+}
+
+.light-mode .fa-sun {
+    display: none;
+}
+
+.dark-mode .fa-moon {
+    display: none;
+}
+
+.app-container {
+    display: flex;
+    flex: 1;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-accent);
+    padding: 1.5rem;
+    box-shadow: 2px 0 5px var(--shadow-color);
+}
+
+.sidebar h2 {
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.model-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.model-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.model-btn i {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+}
+
+.model-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.model-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--secondary-color);
+}
+
+.model-btn.active i {
+    color: white;
+}
+
+.content {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-section, .result-section {
+    background-color: var(--bg-accent);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.input-section h2, .result-section h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+#text-input {
+    width: 100%;
+    height: 150px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    resize: vertical;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+#instruction-container {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--bg-secondary);
+}
+
+#instruction-container h3 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+#instruction-input {
+    width: 100%;
+    height: 80px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--bg-accent);
+    color: var(--text-primary);
+    resize: vertical;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.instruction-help {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+#analyze-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#analyze-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#result-label {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.positive {
+    background-color: var(--positive-color);
+    color: white;
+}
+
+.negative {
+    background-color: var(--negative-color);
+    color: white;
+}
+
+.neutral {
+    background-color: var(--neutral-color);
+    color: white;
+}
+
+#result-details {
+    margin-top: 1rem;
+}
+
+.probability-bar {
+    height: 25px;
+    margin: 5px 0;
+    border-radius: 5px;
+    background-color: var(--bg-secondary);
+    overflow: hidden;
+    position: relative;
+}
+
+.probability-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.5s ease-in-out;
+}
+
+.probability-label {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 500;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Styles pour les entités nommées */
+.entity-text {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    background-color: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 1.05rem;
+}
+
+/* Styles pour le texte analysé */
+.analyzed-text {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    background-color: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    border-left: 5px solid var(--primary-color);
+}
+
+/* Texte pour le sentiment */
+.positive-text {
+    background-color: rgba(39, 174, 96, 0.1);
+    color: var(--positive-color);
+    border-left-color: var(--positive-color);
+    font-weight: 500;
+}
+
+.negative-text {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: var(--negative-color);
+    border-left-color: var(--negative-color);
+    font-weight: 500;
+}
+
+.neutral-text {
+    background-color: rgba(243, 156, 18, 0.1);
+    color: var(--neutral-color);
+    border-left-color: var(--neutral-color);
+    font-weight: 500;
+}
+
+/* Texte pour la relation */
+.relation-text {
+    background-color: rgba(41, 128, 185, 0.1);
+    border-left-color: var(--primary-color);
+}
+
+/* Styles pour les légendes d'entités */
+.entity-legend {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: var(--bg-secondary);
+    border-radius: 5px;
+}
+
+.entity-legend h4 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+/* Styles pour les entités */
+.entity {
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.entity:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.entity-tooltip {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bg-accent);
+    color: var(--text-primary);
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.entity:hover .entity-tooltip {
+    display: block;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(5px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Styles spécifiques pour les types d'entités */
+.entity-CORP {
+    background-color: rgba(41, 128, 185, 0.2);
+    border-bottom: 2px solid #2980b9;
+    color: #2980b9;
+}
+
+.entity-CW {
+    background-color: rgba(142, 68, 173, 0.2);
+    border-bottom: 2px solid #8e44ad;
+    color: #8e44ad;
+}
+
+.entity-DATE {
+    background-color: rgba(39, 174, 96, 0.2);
+    border-bottom: 2px solid #27ae60;
+    color: #27ae60;
+}
+
+.entity-MONEY {
+    background-color: rgba(243, 156, 18, 0.2);
+    border-bottom: 2px solid #f39c12;
+    color: #f39c12;
+}
+
+.entity-PERCENT {
+    background-color: rgba(231, 76, 60, 0.2);
+    border-bottom: 2px solid #e74c3c;
+    color: #e74c3c;
+}
+
+.entity-PERSON, .entity-PER {
+    background-color: rgba(231, 76, 60, 0.2);
+    border-bottom: 2px solid #e74c3c;
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.entity-PRODUCT {
+    background-color: rgba(22, 160, 133, 0.2);
+    border-bottom: 2px solid #16a085;
+    color: #16a085;
+}
+
+/* Styles supplémentaires pour d'autres types d'entités possibles */
+.entity-LOC, .entity-GPE, .entity-LOCATION {
+    background-color: rgba(211, 84, 0, 0.2);
+    border-bottom: 2px solid #d35400;
+    color: #d35400;
+}
+
+.entity-ORG, .entity-ORGANIZATION {
+    background-color: rgba(41, 128, 185, 0.2);
+    border-bottom: 2px solid #2980b9;
+    color: #2980b9;
+}
+
+.entity-TIME {
+    background-color: rgba(127, 140, 141, 0.2);
+    border-bottom: 2px solid #7f8c8d;
+    color: #7f8c8d;
+}
+
+.entity-MISC {
+    background-color: rgba(149, 165, 166, 0.2);
+    border-bottom: 2px solid #95a5a6;
+    color: #95a5a6;
+}
+
+.entity-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.entity-stat-item {
+    background-color: var(--bg-secondary);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.entity-color-sample {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* Couleurs des échantillons selon les types d'entités */
+.entity-color-sample.entity-CORP {
+    background-color: #2980b9;
+}
+
+.entity-color-sample.entity-CW {
+    background-color: #8e44ad;
+}
+
+.entity-color-sample.entity-DATE {
+    background-color: #27ae60;
+}
+
+.entity-color-sample.entity-MONEY {
+    background-color: #f39c12;
+}
+
+.entity-color-sample.entity-PERCENT {
+    background-color: #e74c3c;
+}
+
+.entity-color-sample.entity-PERSON, 
+.entity-color-sample.entity-PER {
+    background-color: #e74c3c;
+}
+
+.entity-color-sample.entity-PRODUCT {
+    background-color: #16a085;
+}
+
+.entity-color-sample.entity-LOC, 
+.entity-color-sample.entity-GPE, 
+.entity-color-sample.entity-LOCATION {
+    background-color: #d35400;
+}
+
+.entity-color-sample.entity-ORG, 
+.entity-color-sample.entity-ORGANIZATION {
+    background-color: #2980b9;
+}
+
+.entity-color-sample.entity-TIME {
+    background-color: #7f8c8d;
+}
+
+.entity-color-sample.entity-MISC {
+    background-color: #95a5a6;
+}
+
+.entity-stat-count {
+    background-color: var(--primary-color);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Styles pour l'interprétation des relations */
+.relation-interpretation {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: var(--bg-secondary);
+    border-radius: 5px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.relation-interpretation h4 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.relation-interpretation p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.relation-name {
+    color: var(--primary-color);
+    font-size: 1.05em;
+}
+
+#loading-indicator {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+.hidden {
+    display: none;
+}
+
+footer {
+    background-color: var(--bg-accent);
+    padding: 1rem;
+    text-align: center;
+    color: var(--text-secondary);
+    box-shadow: 0 -2px 8px var(--shadow-color);
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        box-shadow: 0 2px 5px var(--shadow-color);
+        padding: 1rem;
+    }
+
+    .model-selector {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .model-btn {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .content {
+        padding: 1rem;
+    }
+} 
