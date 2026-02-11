@@ -34,8 +34,8 @@ Cette application web permet d'analyser des textes financiers en utilisant des t
 
 1. Clonez ce dépôt :
 ```bash
-git clone <URL-du-dépôt>
-cd <nom-du-dossier>
+git clone https://github.com/OsmanOSA/Projet_Traitement_automatique_du_langage.git
+cd Projet_Traitement_automatique_du_langage
 ```
 
 2. Créez un environnement virtuel (recommandé) :
@@ -132,3 +132,4 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 ## Contact
 
 Pour toute question ou suggestion, n'hésitez pas à ouvrir une issue sur GitHub.
+
